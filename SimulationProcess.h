@@ -57,7 +57,8 @@ class SimulationProcess{
 	
 	//////////function members//////////
 	
-	
+	~SimulationProcess();
+	SimulationProcess();
 };
 
 
