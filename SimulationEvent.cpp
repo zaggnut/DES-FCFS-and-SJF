@@ -25,7 +25,8 @@ SimulationEvent::SimulationEvent(eventType e, int t)
 //Operator overloading of <
 bool SimulationEvent::operator <(const SimulationEvent& e) 
 {
-    return (this->TimeStampMS < e.TimeStampMS);
+	//this violates a golden rule of operator overloading, overloading "<" but implementing with ">"
+    return (this->TimeStampMS > e.TimeStampMS); //remember, the lower the timestamp, the higher the priority.
 }
 
 void SimulationEvent::print()
