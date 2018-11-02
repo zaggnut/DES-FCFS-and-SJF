@@ -2,16 +2,16 @@
 #include <vector>
 #include <string>
 
-#include "iocCompletion.h"
+#include "ioCompletion.h"
 
 using namespace std;
 
-iocCompletion::~iocCompletion()
+ioCompletion::~ioCompletion()
 {
     //type code here
     
 }
-iocCompletion::iocCompletion(int t) 
+ioCompletion::ioCompletion(int t) 
     : SimulationEvent(IO_completion, t)
 {
     //type code here
