@@ -84,10 +84,11 @@ int main(int argc, char *argv[])
         switch (event->eventName)
         {
         case eventType::process_arrival:
-            readyQueue.push(new SimulationProcess());
+            readyQueue.push(new SimulationProcess(0));
             break;
         case eventType::CPU_Burst_completion:
-            if(currentProcess->remainingCPUDuration != 0)
+            currentProcess->remainingCPUDuration -= currentProcess->nextCPUBurstLength;
+            if (currentProcess->remainingCPUDuration > 0)
             {
                 eventPriorityQueue.push(new ioCompletion(0, currentProcess));
             }
@@ -98,9 +99,14 @@ int main(int argc, char *argv[])
             cpuIdle = true;
             break;
         case eventType::IO_completion:
-            readyQueue.push(((ioCompletion*)event)->process);
+            readyQueue.push(((ioCompletion *)event)->process);
         }
         delete event;
+        if (cpuIdle)
+        {
+            currentProcess = readyQueue.front();
+            readyQueue.pop();
+        }
     }
 
     ///////////////print out statistical data////////////////////////////////////////////////////////////

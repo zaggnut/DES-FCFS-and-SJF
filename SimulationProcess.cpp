@@ -13,9 +13,9 @@ SimulationProcess::~SimulationProcess()
 
 }
 
-SimulationProcess::SimulationProcess()
+SimulationProcess::SimulationProcess(int id)
 {
-    processID = 0;
+    processID = id;
     startTime = 0;
     totalCPUDuration = 0;
     remainingCPUDuration = 0;
