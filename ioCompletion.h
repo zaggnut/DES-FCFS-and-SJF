@@ -5,6 +5,7 @@
 #include <vector>
 #include <iostream>
 #include "SimulationEvent.h"
+#include "SimulationProcess.h"
 
 using namespace std;
 
@@ -13,7 +14,8 @@ class ioCompletion: public SimulationEvent
 {
     public:
         ~ioCompletion();
-        ioCompletion(int t);
+        ioCompletion(int t, SimulationProcess* proc);
+        SimulationProcess* process;
     
 };
 

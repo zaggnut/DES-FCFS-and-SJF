@@ -11,9 +11,10 @@ ioCompletion::~ioCompletion()
     //type code here
     
 }
-ioCompletion::ioCompletion(int t) 
+ioCompletion::ioCompletion(int t, SimulationProcess* proc) 
     : SimulationEvent(IO_completion, t)
 {
+    process = proc;
     //type code here
     
 }
